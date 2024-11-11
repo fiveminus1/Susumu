@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
 
+import 'home_screen.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -13,6 +15,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Susumu',
       theme: AppTheme.theme,
+      home: const HomeScreen(),
     );
   }
 }
