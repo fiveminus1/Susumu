@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'new_workout_screen.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -22,8 +23,9 @@ class HomeScreen extends StatelessWidget{
 
             ElevatedButton(
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Create a New Workout')),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NewWorkoutScreen()),
                 );
               }, 
               style: ElevatedButton.styleFrom(
