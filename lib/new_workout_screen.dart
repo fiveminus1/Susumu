@@ -28,10 +28,19 @@ class _NewWorkoutScreenState extends State<NewWorkoutScreen>{
             child: ListView.builder(
               itemCount: exercises.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(exercises[index].name),
-                  subtitle: Text(
-                    'Sets: ${exercises[index].sets}, Reps: ${exercises[index].reps}'),
+                return Dismissible(
+                  key: ValueKey(exercises[index]),
+                  background: Container(color: Colors.red),
+                  onDismissed: (direction) {
+                    setState((){
+                      exercises.removeAt(index);
+                    });
+                  },
+                  child: ListTile(
+                    title: Text(exercises[index].name),
+                    subtitle: Text(
+                      'Sets: ${exercises[index].sets}, Reps: ${exercises[index].reps}'),
+                  ),
                 );
               },
             ),
