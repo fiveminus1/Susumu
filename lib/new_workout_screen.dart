@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'models/exercise.dart';
+import 'models/workout.dart';
 import 'add_exercise_screen.dart';
 
 class NewWorkoutScreen extends StatefulWidget{
@@ -16,6 +17,15 @@ class _NewWorkoutScreenState extends State<NewWorkoutScreen>{
     setState((){
       exercises.add(exercise);
     });
+  }
+
+  Future<void> _saveWorkout() async{
+    final workout = Workout(
+      timestamp: DateTime.now(),
+      exercises: exercises,
+    );
+
+    //print("Workout saved: ${workout.toMap()}");
   }
 
   @override
@@ -45,7 +55,7 @@ class _NewWorkoutScreenState extends State<NewWorkoutScreen>{
               },
             ),
           ),
-          ElevatedButton(
+          ElevatedButton( // add exercise button
             onPressed: () async {
               final result = await Navigator.push(
                 context,
@@ -56,6 +66,10 @@ class _NewWorkoutScreenState extends State<NewWorkoutScreen>{
               }
             }, 
             child: const Text('Add Exercise'),
+          ),
+          ElevatedButton( // save workout button
+            onPressed: _saveWorkout, 
+            child: const Text('Save Workout'),
           ),
         ],
       ),
